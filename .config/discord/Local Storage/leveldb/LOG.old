@@ -1,9 +1,0 @@
-2022/01/29-16:50:48.861 3d45 Reusing MANIFEST /home/jorge/.config/discord/Local Storage/leveldb/MANIFEST-000001
-2022/01/29-16:50:48.864 3d45 Recovering log #595
-2022/01/29-16:50:48.864 3d45 Reusing old log /home/jorge/.config/discord/Local Storage/leveldb/000595.log 
-2022/01/29-17:31:50.081 3d46 Level-0 table #600: started
-2022/01/29-17:31:50.083 3d46 Level-0 table #600: 14503 bytes OK
-2022/01/29-17:31:50.087 3d46 Delete type=0 #595
-2022/01/29-18:18:50.071 3d65 Level-0 table #602: started
-2022/01/29-18:18:50.081 3d65 Level-0 table #602: 11743 bytes OK
-2022/01/29-18:18:50.082 3d65 Delete type=0 #599
