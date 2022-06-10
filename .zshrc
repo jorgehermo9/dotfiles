@@ -12,7 +12,8 @@ export LANG=en_US.utf8
 
 # Ranger default editor
 export VISUAL=nano
-
+export EDITOR=nano
+export EXPLORER=ranger
 # Sxhkd
 export SXHKD_SHELL=/bin/bash
 
@@ -25,35 +26,19 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:$HOME/.local/bin
 #PATH ISD
 
 #AdoptOpenJDK11
-export JAVA_HOME=/usr/lib/jvm/java-11-adoptopenjdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 PATH=$JAVA_HOME/bin:$PATH
-
-#Maven
-MAVEN_HOME=$HOME/software/apache-maven-3.8.2
-PATH=$MAVEN_HOME/bin:$PATH
-export MAVEN_OPTS="-Xms512m -Xmx1024m"
-
-#Intellij
-IDEA_HOME=$HOME/software/idea
-PATH=$IDEA_HOME/bin:$PATH
-##Fix gray screen on bspwm
-export _JAVA_AWT_WM_NONREPARENTING=1
 
 #PulseSecure
 PULSE_HOME=/opt/pulsesecure
 PATH=$PULSE_HOME/bin:$PATH
-
-# CTF
-## exiftool
-EXIF_HOME=/home/jorge/ctf/tools/exiftool
-PATH=$EXIF_HOME:$PATH
 
 #Tools
 PAPERVIEW_HOME=/home/jorge/tools/paperview
 PATH=$PAPERVIEW_HOME:$PATH
 
 # Rust
-. "$HOME/.cargo/env"
+PATH=$PATH:$HOME/.cargo/bin
 
 #my scripts
 SCRIPTS_HOME=/home/jorge/scripts
@@ -66,7 +51,7 @@ SAVEHIST=50000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/david/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -97,7 +82,7 @@ alias tree='tree -C'
 alias cat='bat'
 alias lll='exa -l -ga --octal-permissions'
 alias feh='feh -Fd --draw-tinted'
-alias vtop="vtop --theme brew"
+alias open="xdg-open &>/dev/null"
 
 alias bg="feh --bg-fill --randomize --recursive ~/wallpapers"
 alias idea="idea.sh &>/dev/null & disown"
@@ -116,21 +101,34 @@ alias gm="git merge"
 alias gst="git status"
 alias gck="git checkout"
 alias gd="git diff"
-alias fgc="git add .;git commit -m \"fast committed\";git push"
+alias fgc="git add .;git commit -m 'fast committed';git push"
+
 #Cargo aliases
 alias cr="cargo run"
 alias cb="cargo build"
 alias cc="cargo check"
 alias ct="cargo test"
 
+alias svgtopdf="inkscape --export-type=pdf"
+
 #Calc function
 calc(){ awk "BEGIN { print "$*" }"; }
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-xset r rate 200 40
+#xset r rate 200 40
 
 eval $(thefuck --alias)
 
+#Reports current power draw
+power(){
+	echo - | awk "{printf \"%.2f\", \
+	$(( \
+	  $(cat /sys/class/power_supply/BAT1/current_now) * \
+	  $(cat /sys/class/power_supply/BAT1/voltage_now) \
+	)) / 1000000000000 }" ; echo " W "
+}
 
 
+fpath=(/home/jorge/.gtheme/completions $fpath)
+autoload -Uz compinit && compinit
