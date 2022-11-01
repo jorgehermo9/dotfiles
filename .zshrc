@@ -23,12 +23,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 # Default PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:$HOME/.local/bin
 
-#PATH ISD
-
-#AdoptOpenJDK11
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-PATH=$JAVA_HOME/bin:$PATH
-
 #PulseSecure
 PULSE_HOME=/opt/pulsesecure
 PATH=$PULSE_HOME/bin:$PATH
@@ -39,6 +33,9 @@ PATH=$PAPERVIEW_HOME:$PATH
 
 # Rust
 PATH=$PATH:$HOME/.cargo/bin
+
+# Ocaml opam
+PATH=$HOME/.opam/default/bin:$PATH
 
 #my scripts
 SCRIPTS_HOME=/home/jorge/scripts
@@ -53,20 +50,18 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Default aliases
-alias la='ls -A'
-alias l='ls -CF'
+alias la='lsd -A'
+alias l='lsd -CF'
 
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
@@ -77,21 +72,21 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # My aliases
-alias ll='ls -alF'
+alias ll='lsd -alF'
+alias ls='lsd'
 alias tree='tree -C'
 alias cat='bat'
-alias lll='exa -l -ga --octal-permissions'
 alias feh='feh -Fd --draw-tinted'
 alias open="xdg-open &>/dev/null"
 
-alias bg="feh --bg-fill --randomize --recursive ~/wallpapers"
+alias bg="feh --bg-fill --randomize --recursive ~/.config/gtheme/wallpapers"
 alias idea="idea.sh &>/dev/null & disown"
 alias pulse="pulseUI &>/dev/null & disown"
 alias pdf="zathura --fork"
 alias dup="kitty . & disown"
+alias c="code ."
 alias ..="cd .."
 alias ...="cd ../.."
-
 #Git aliases
 alias ga="git add"
 alias gc="git commit"
@@ -103,11 +98,26 @@ alias gck="git checkout"
 alias gd="git diff"
 alias fgc="git add .;git commit -m 'fast committed';git push"
 
-#Cargo aliases
+# Cargo aliases
+
 alias cr="cargo run"
 alias cb="cargo build"
 alias cc="cargo check"
 alias ct="cargo test"
+
+# Elixir aliases
+
+alias mixt="mix test --max-failures 1"
+alias mixcred="mix credo"
+alias mixta="mix test"
+alias mixc="mix compile"
+alias mixd="mix deps.get"
+alias mixr="mix run"
+alias mixci="mix format && mix credo && mix dialyzer && mix compile && mix test"
+
+# Mix
+# REcord video
+alias rec="ffmpeg -f x11grab -s $(xdpyinfo | grep dimensions | awk '{print $2;}') -i :0.0 -vcodec libx264 -preset ultrafast -crf 0 -threads 0 ~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
 
 alias svgtopdf="inkscape --export-type=pdf"
 
@@ -117,8 +127,6 @@ calc(){ awk "BEGIN { print "$*" }"; }
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 #xset r rate 200 40
-
-eval $(thefuck --alias)
 
 #Reports current power draw
 power(){
@@ -130,5 +138,10 @@ power(){
 }
 
 
-fpath=(/home/jorge/.gtheme/completions $fpath)
+fpath=($HOME/.gtheme/completions $fpath)
 autoload -Uz compinit && compinit
+
+# Antidote plugin manager
+ANTIDOTE_HOME=$HOME/.antidote
+source /usr/share/zsh-antidote/antidote.zsh
+antidote load
