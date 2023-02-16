@@ -23,10 +23,10 @@ ctrl + shift - 3 : yabai -m window --space 3
 ctrl + shift - 4 : yabai -m window --space 4
 ctrl + shift - 5 : yabai -m window --space 5
 ctrl + shift - 0x21: (yabai -m window --space prev && yabai -m space --focus prev) \
-                    || (yabai -m window --space first --focus first && yabai -m space --focus first)
+                    || (yabai -m window --space last --focus last && yabai -m space --focus last)
 
 ctrl + shift - 0x1E : (yabai -m window --space next && yabai -m space --focus next) \
-                    || (yabai -m window --space last --focus last && yabai -m space --focus last)
+                    || (yabai -m window --space first --focus first && yabai -m space --focus first)
 
 
 # Resize windows
@@ -50,7 +50,7 @@ ctrl + alt - right : \
 ctrl - t : yabai -m window --toggle float
 
 # Make fullscreen
-ctrl - f         : yabai -m window --toggle zoom-fullscreen
+ctrl - f : yabai -m window --toggle zoom-fullscreen
 
 # Change desktop
 ctrl - 1 : $HOME/.config/skhd/scripts/switch-space.sh 1
@@ -59,8 +59,8 @@ ctrl - 3 : $HOME/.config/skhd/scripts/switch-space.sh 3
 ctrl - 4 : $HOME/.config/skhd/scripts/switch-space.sh 4
 ctrl - 5 : $HOME/.config/skhd/scripts/switch-space.sh 5
 # 0x21 stands for '[' and 0x1E stands for ']'
-ctrl - 0x21: yabai -m space --focus prev || yabai -m space --focus first
-ctrl - 0x1E : yabai -m space --focus next || yabai -m space --focus last
+ctrl - 0x21: yabai -m space --focus prev || yabai -m space --focus last
+ctrl - 0x1E : yabai -m space --focus next || yabai -m space --focus first
 
 # Focus monitor
 ctrl + shift + ctrl - right : yabai -m display --focus 2
