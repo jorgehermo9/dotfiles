@@ -1,0 +1,34 @@
+{
+  "default_theme": "Snazzy",
+  "actived": {
+    "alacritty": true,
+    "bspwm": true,
+    "discord": true,
+    "dunst": true,
+    "firefox": true,
+    "firefox-homepage": true,
+    "intellij-idea": false,
+    "kitty": true,
+    "polybar": true,
+    "rofi": true,
+    "spotify": true,
+    "sxhkd": true,
+    "vscode": false,
+    "wallpaper": true,
+    "wallpaper-theme": false
+  },
+  "inverted": {
+    "alacritty": false,
+    "bspwm": false,
+    "discord": false,
+    "dunst": false,
+    "firefox": false,
+    "firefox-homepage": false,
+    "kitty": false,
+    "polybar": true,
+    "rofi": false,
+    "spotify": false,
+    "sxhkd": false,
+    "wallpaper-theme": false
+  }
+}

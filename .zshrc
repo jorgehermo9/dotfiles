@@ -98,6 +98,17 @@ alias gck="git checkout"
 alias gd="git diff"
 alias fgc="git add .;git commit -m 'fast committed';git push"
 
+# Latex aliases
+alias lclean="rm *.{aux,fdb*,fls*,log,sync*,out}"
+# Screencast to mobile
+alias mobile="scrcpy --tcpip=192.168.0.8:5555"
+
+# Docker aliases
+alias dps="docker ps"
+alias dcu="docker compose up --build"
+alias dcd="docker compose down"
+alias dcl="docker compose logs"
+
 # Cargo aliases
 
 alias cr="cargo run"
@@ -113,7 +124,7 @@ alias mixta="mix test"
 alias mixc="mix compile"
 alias mixd="mix deps.get"
 alias mixr="mix run"
-alias mixci="mix format && mix credo && mix dialyzer && mix compile && mix test"
+alias mixci="mix format && mix credo && mix dialyzer && mix compile && mix test --no-start"
 
 # Mix
 # REcord video

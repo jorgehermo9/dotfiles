@@ -1,12 +1,13 @@
 {
-  "current_desktop": "wip",
-  "current_theme": "Gruvbox-Dark",
+  "current_desktop": "simple",
+  "current_theme": "Catppuccin",
   "fav_themes": [
     "Awesome",
     "BlackAndWhite-Dark",
     "BlackAndWhite-Light",
     "Catppuccin",
     "Challenger-Deep",
+    "Cobalt-Neon",
     "Dracula",
     "Elektropunk",
     "Everforest-Dark-Hard",
@@ -24,13 +25,16 @@
     "Nord",
     "Nu-Disco",
     "OK100-Matrix",
+    "Oxide",
     "Radical",
     "Rose-Pine",
     "Rose-Pine-Dawn",
     "Rose-Pine-Moon",
     "Roseate",
     "Snazzy",
+    "Tokyo-Night",
     "Tomorrow-Night-Blue",
-    "Vue"
+    "Vue",
+    "WildCherry"
   ]
 }
